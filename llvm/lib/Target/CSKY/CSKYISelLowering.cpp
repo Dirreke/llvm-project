@@ -109,6 +109,26 @@ CSKYTargetLowering::CSKYTargetLowering(const TargetMachine &TM,
 
   setOperationAction(ISD::ATOMIC_FENCE, MVT::Other, Expand);
 
+  // These libcalls are not available in 32-bit.
+  setLibcallName(RTLIB::SHL_I128, nullptr);
+  setLibcallName(RTLIB::SRL_I128, nullptr);
+  setLibcallName(RTLIB::SRA_I128, nullptr);
+  setLibcallName(RTLIB::MUL_I128, nullptr);
+  setLibcallName(RTLIB::MULO_I64, nullptr);
+  setLibcallName(RTLIB::MULO_I128, nullptr);
+  setLibcallName(RTLIB::SINTTOFP_I128_F16, nullptr);
+  setLibcallName(RTLIB::SINTTOFP_I128_F32, nullptr);
+  setLibcallName(RTLIB::SINTTOFP_I128_F64, nullptr);
+  setLibcallName(RTLIB::SINTTOFP_I128_F80, nullptr);
+  setLibcallName(RTLIB::SINTTOFP_I128_F128, nullptr);
+  setLibcallName(RTLIB::SINTTOFP_I128_PPCF128, nullptr);
+  setLibcallName(RTLIB::UINTTOFP_I128_F16, nullptr);
+  setLibcallName(RTLIB::UINTTOFP_I128_F32, nullptr);
+  setLibcallName(RTLIB::UINTTOFP_I128_F64, nullptr);
+  setLibcallName(RTLIB::UINTTOFP_I128_F80, nullptr);
+  setLibcallName(RTLIB::UINTTOFP_I128_F128, nullptr);
+  setLibcallName(RTLIB::UINTTOFP_I128_PPCF128, nullptr);
+
   // Float
 
   ISD::CondCode FPCCToExtend[] = {
